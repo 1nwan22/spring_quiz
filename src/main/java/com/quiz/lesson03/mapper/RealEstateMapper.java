@@ -12,5 +12,18 @@ public interface RealEstateMapper {
 
 	public List<RealEstate> selectRealEstateListByRentPrice(int rentPrice);
 
-	public List<RealEstate> selectRealEstateListByAreaPrice(@Param("area") Integer area, @Param("price") Integer price);
+	public List<RealEstate> selectRealEstateListByAreaPrice(
+			// @Param 하나의 map이 된다.(파라미터가 2개 이상일 때)
+			@Param("area") int area, 
+			@Param("price") int price);
+	
+	public int insertRealEstate(RealEstate realEstate);
+	
+	public int insertRealEstateAsField(
+			@Param("realtorId") int realtorId, 
+			@Param("address") String address, 
+			@Param("area") int area, 
+			@Param("type") String type, 
+			@Param("price") int price, 
+			@Param("rentPrice") Integer rentPrice);
 }
