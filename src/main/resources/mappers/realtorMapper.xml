@@ -23,4 +23,19 @@
  			, NOW()
  	 	)
  	 </insert>
+ 	 
+ 	 <select id="selectRealtorById" parameterType="int" resultType="com.quiz.lesson04.domain.Realtor">
+ 	 	SELECT
+ 	 		`id`
+ 	 		,`office`
+			,`phoneNumber`
+			,`address`
+			,`grade`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`realtor`
+		WHERE
+			`id` = #{id}
+ 	 </select>
  </mapper>
