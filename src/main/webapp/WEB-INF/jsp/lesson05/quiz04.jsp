@@ -48,7 +48,7 @@
 						<c:set var="email" value="${member.email}" />
 						<b>${fn:split(email, '@')[0]}</b>@${fn:split(email, '@')[1]}
 					</td>
-					<td>
+					<td class="text-left">
 						<c:set var="introduce" value="${member.introduce}" />
 						<c:choose>
 							<c:when test="${fn:length(introduce) > 15}">
