@@ -41,10 +41,24 @@
 						</c:choose>
 					</td>
 					<td>
-						
+						<c:set var="nationality" value="${member.nationality}" />
+						${fn:replace(nationality, '삼국시대', '삼국 - ')}
 					</td>
-					<td></td>
-					<td></td>
+					<td>
+						<c:set var="email" value="${member.email}" />
+						<b>${fn:split(email, '@')[0]}</b>@${fn:split(email, '@')[1]}
+					</td>
+					<td>
+						<c:set var="introduce" value="${member.introduce}" />
+						<c:choose>
+							<c:when test="${fn:length(introduce) > 15}">
+								${fn:substring(introduce, 0, 15)} ...
+							</c:when>
+							<c:otherwise>
+								${introduce}
+							</c:otherwise>
+						</c:choose>
+					</td>
 				</tr>
 			</c:forEach>
 			</tbody>
