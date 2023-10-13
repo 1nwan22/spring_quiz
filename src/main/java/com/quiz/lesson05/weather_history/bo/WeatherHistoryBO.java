@@ -18,4 +18,9 @@ public class WeatherHistoryBO {
 		return weatherHistoryMapper.selectWeatherHistoryList();
 	}
 	
+	public void addWeatherHistory(String date, String weather, double temperatures, 
+			double precipitation, String microDust, double windSpeed) {
+		weatherHistoryMapper.insertWeatherHistory(date, weather, temperatures, precipitation, microDust, windSpeed);
+	}
+	
 }
