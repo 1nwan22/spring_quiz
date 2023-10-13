@@ -1,12 +1,13 @@
-package com.quiz.lesson05.weather_history.bo;
+package com.quiz.weather_history.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.quiz.lesson05.weather_history.domain.WeatherHistory;
-import com.quiz.lesson05.weather_history.mapper.WeatherHistoryMapper;
+import com.quiz.weather_history.domain.WeatherHistory;
+import com.quiz.weather_history.mapper.WeatherHistoryMapper;
 
 @Service
 public class WeatherHistoryBO {
@@ -18,7 +19,7 @@ public class WeatherHistoryBO {
 		return weatherHistoryMapper.selectWeatherHistoryList();
 	}
 	
-	public void addWeatherHistory(String date, String weather, double temperatures, 
+	public void addWeatherHistory(Date date, String weather, double temperatures, 
 			double precipitation, String microDust, double windSpeed) {
 		weatherHistoryMapper.insertWeatherHistory(date, weather, temperatures, precipitation, microDust, windSpeed);
 	}

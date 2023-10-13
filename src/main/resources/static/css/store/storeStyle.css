@@ -1,0 +1,11 @@
+@charset "UTF-8";
+#wrap {width: 900px;}
+header {
+	height: 100px;
+	background-color: rgb(18, 163, 184);
+	}
+.logo {font-weight: bold; color: white;}
+.contents {min-height: 500px;}
+.box {border: 2px solid  rgb(18, 163, 184); min-height: 100px;}
+.box-font {font-size: 18px; font-weight: bold;}
+footer {height: 100px;}

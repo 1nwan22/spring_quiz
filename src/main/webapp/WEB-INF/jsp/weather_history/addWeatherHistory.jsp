@@ -6,12 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 <link rel="stylesheet" type="text/css" href="/css/weather_history/weather_history.css">
 <title>날씨 정보</title>
 </head>
@@ -25,10 +27,10 @@
 				</div>
 				<ul class="nav">
 					<li class="nav-item">
-						<a class="nav-link menu-font" href="/lesson05/quiz05/weather-history-view">날씨</a>
+						<a class="nav-link menu-font" href="/weather/history-view">날씨</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link menu-font" href="/lesson05/quiz05/add-weather-history-view">날씨 입력</a>
+						<a class="nav-link menu-font" href="/weather/add-history-view">날씨 입력</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link menu-font" href="#">테마 날씨</a>
@@ -40,7 +42,7 @@
 			</nav>
 			<section class="col-10  mt-3 ml-5">
 				<h3 class="font-weight-bold">날씨 입력</h3>
-				<form method="post" action="/lesson05/quiz05/add-weather-history">
+				<form method="post" action="/weather/add-history">
 					<div class="form-group pl-5 pt-4">
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="col-6 d-flex align-items-center m-2">
@@ -111,16 +113,20 @@
 		</footer>
 	</div>
 	<script>
-		$('#date').datepicker({
-			dateFormat: 'yy-mm-dd'
-            , changeMonth:true
-            , changeYear:true
-            , minDate: '0'
-            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
-            , dayNamesMin:['일', '월', '화', '수', '목', '금', '토']
-            , showMonthAfterYear: true
-            , yearSuffix: '년'
+		$(document).ready(function() {
+			
+			$('#date').datepicker({
+				dateFormat: 'yy-mm-dd'
+	            , changeMonth:true
+	            , changeYear:true
+	            , minDate: '0'
+	            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+	            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월']
+	            , dayNamesMin:['일', '월', '화', '수', '목', '금', '토']
+	            , showMonthAfterYear: true
+	            , yearSuffix: '년'
+			});
+			
 		});
 	</script>
 </body>

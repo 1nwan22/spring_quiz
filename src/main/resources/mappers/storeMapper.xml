@@ -6,7 +6,14 @@
  	<select id="selectStoreList" resultType="com.quiz.lesson02.domain.Store">
  		<!-- 주소 연결 잘 되었는지 확인 -->
  		SELECT
- 			*
+ 			`id`
+			,`name`
+			,`phoneNumber`
+			,`address`
+			,`businessNumber`
+			,`introduce`
+			,`createdAt`
+			,`updatedAt`
  		FROM
  			`store`
  	</select>
