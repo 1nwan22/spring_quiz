@@ -14,18 +14,60 @@
 <body>
 	<div class="container">
 		<h1>즐겨찾기 추가하기</h1>
-		<label for="name">제목</label>
-		<input type="text" id="name" name="name" class="form-control">
-		<label for="url">주소</label>
-		<input type="text" id="url" name="url" class="form-control">
+		<div class="form-group">
+			<label for="name">제목</label>
+			<input type="text" id="name" name="name" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="url">주소</label>
+			<div class="input-group d-flex">
+				<input type="text" id="url" name="url" class="form-control">
+				<input type="button" id="urlCheckBtn" class="form-control btn btn-info col-1" value="중복확인">
+			</div>
+			<small id="urlStatusArea"></small>
+		</div>
 		<input type="button" id="addBtn" class="btn btn-success form-control" value="추가">
 	</div>
 </body>
 <script>
 	$(document).ready(function() {
+		$("#urlCheckBtn").on("click", function() {
+			$("#urlStatusArea").empty();
+			let name = $("name").val().trim();
+			let url = $("#url").val().trim();
+			
+			$.ajax({
+				type:"GET"
+				, url:"/lesson06/quiz02/is-duplication"
+				, data:{"name":name, "url":url}
+				
+				, success:function(data) {
+					if (data.is_duplication) {
+						
+					}
+					
+				}
+				
+				, error:function(request, status, error) {
+					alert("실패");
+					alert(request);
+					alert(status);
+					alert(error);
+				}
+			
+			})
+			
+			
+			$("#urlStatusArea").append('<span class="text-danger">중복된 url입니다.</span>');
+		});
+		
+		
 		$("#addBtn").on("click", function() {
 			let name = $("#name").val().trim();
 			let url = $("#url").val().trim();
+			
+			console.log(name);
+			console.log(url);
 			
 			if (!name) {
 				alert("제목을 입력하세요")
@@ -35,8 +77,8 @@
 				alert("주소를 입력하세요")
 				return;
 			}
-			if (!url.startsWith("http")) {
-				alert("http 또는 https를 포함한 url을 다시 입력하세요")
+			if (!url.startsWith("http://") && !url.startsWith("https://")) {
+				alert("주소 형식이 잘못 되었습니다.")
 				return;
 			}
 			
@@ -45,13 +87,17 @@
 				, url:"/lesson06/quiz01/add-bookmark"
 				, data:{"name":name, "url":url}
 			
-				, success:function(data) {
-					//alert("data");
-					if (data == "성공") {
+				, success:function(data) { // data: response 응답값(JSON String) => Dictionary Object jquery의 AJAX 함수가 json형태이면 parsing해서 객체로 변환해줌
+					// data는 JSON String => Object 변환된 형태로 사용할 수 있다
+					// jquery의 ajax 함수 기능
+					alert(data.code);
+					alert(data.result);
+					if (data.result == "success") {
 						location.href="/lesson06/quiz01/bookmark-list-view";
-					}
+					} 
 				}
 				, error:function(request, status, error) {
+					alert("추가에 실패했습니다. 관리자에게 문의해주세요.");
 					alert(request);
 					alert(status);
 					alert(error);

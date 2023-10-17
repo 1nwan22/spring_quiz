@@ -17,6 +17,24 @@
 <title>가게 리뷰</title>
 </head>
 <body>
-
+	<div id="wrap" class="container">
+		<header class="d-flex align-items-center">
+			<h1 class="logo pl-5">배탈의 민족</h1>
+		</header>
+		<section class="contents">
+			<div class="display-3 mt-3 mb-3">우리동네 가게</div>
+			<article>
+			</article>
+		</section>
+		<hr>
+		<footer>
+			<h3 class="font-weight-bold">
+				(주)우와한 형제
+			</h3>
+			<h4 class="text-secondary">
+				고객센터 : 1500-1500
+			</h4>
+		</footer>
+	</div>
 </body>
 </html>

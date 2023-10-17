@@ -27,10 +27,13 @@ public class StoreController {
 		return "/store/storeList";
 	}
 	
-	@GetMapping("/review-list-view")
-	public String reviewListView(
-			@RequestParam("storeId") int storeId ) {
+	@GetMapping("/review-list")
+	public String reviewListById(
+			@RequestParam("storeId") int storeId,
+			Model model) {
+		
 		return "/store/reviewList";
 	}
+	
 	
 }

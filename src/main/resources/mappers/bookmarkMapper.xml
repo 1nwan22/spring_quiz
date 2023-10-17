@@ -19,6 +19,7 @@
  			, NOW()
  		)
  	</insert>
+ 	
  	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.Bookmark">
  		SELECT
  			`id`
