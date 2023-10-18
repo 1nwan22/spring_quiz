@@ -20,18 +20,19 @@
 		</div>
 		<div class="form-group">
 			<label for="url">주소</label>
-			<div class="input-group d-flex">
+			<div class="d-flex input-group">
 				<input type="text" id="url" name="url" class="form-control">
 				<input type="button" id="urlCheckBtn" class="form-control btn btn-info col-1" value="중복확인">
 			</div>
-			<small id="urlStatusArea"></small>
+			<small id="duplicatedText" class="text-danger d-none">중복된 url입니다</small>
+			<small id="availableText" class="text-success d-none">저장 가능한 url 입니다</small>
 		</div>
 		<input type="button" id="addBtn" class="btn btn-success form-control" value="추가">
 	</div>
 </body>
 <script>
 	$(document).ready(function() {
-		$("#urlCheckBtn").on("click", function() {
+/* 		$("#urlCheckBtn").on("click", function() {
 			$("#urlStatusArea").empty();
 			let name = $("#name").val().trim();
 			let url = $("#url").val().trim();
@@ -60,6 +61,40 @@
 			})
 			
 			
+		}); */
+		
+		// 중복 확인 버튼
+		$("#urlCheckBtn").on("click", function() {
+			let url = $("#url").val().trim();
+			if (!url) {
+				alert("검사할 url을 입력하세요.");
+				return;
+			}
+			
+			// DB에서 URL 중복확인 - AJAX 통신
+			$.ajax({
+				// request
+				type:"post"
+				, url:"/lesson06/quiz02/is-duplicated-url"
+				, data:{"url":url}
+			
+				// response
+				, success:function(data) { // data JSON => dictionary
+					// {"code":200, "is_duplication":true} true:중복
+					if (data.is_duplication) {
+						// 중복
+						$("#duplicatedText").removeClass("d-none");
+						$("#availableText").addClass("d-none");
+					} else {
+						// 중복 아님
+						$("#duplicatedText").addClass("d-none");
+						$("#availableText").removeClass("d-none");
+					}
+				}
+				, error:function(request, status, error) {
+					alert("실패");
+				}
+			});
 		});
 		
 		
@@ -80,6 +115,12 @@
 			}
 			if (!url.startsWith("http://") && !url.startsWith("https://")) {
 				alert("주소 형식이 잘못 되었습니다.")
+				return;
+			}
+			
+			// Quiz02) 저장 가능한 url인지 체크
+			if ($("#availableText").hasClass('d-none')) { // availableText d-none이 있으면 가입 불가
+				alert("URL 중복확인을 다시 해주세요");
 				return;
 			}
 			

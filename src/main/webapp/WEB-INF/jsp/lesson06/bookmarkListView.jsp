@@ -32,7 +32,10 @@
 					<td class="bookmark-id">${bookmark.id}</td>
 					<td>${bookmark.name}</td>
 					<td><a href="${bookmark.url}" target="_blank">${bookmark.url}</a></td>
-					<td><input type="button" class="del-btn btn btn-danger btn-sm" value="삭제"></td>
+					<!-- 1) value 속성을 이용해서 값 세팅 -->
+					<%-- <td><button type="button" class="del-btn btn btn-danger btn-sm" value="${bookmark.id}">삭제</button></td> --%>
+					<!-- 2) data 이용해서 태그에 값 세팅: 대문자 X -->
+					<td><button type="button" class="del-btn btn btn-danger btn-sm" data-bookmark-id="${bookmark.id}" data-url="">삭제</button></td>
 				</tr>
 			</c:forEach>
 			</tbody>
@@ -40,17 +43,31 @@
 	</div>
 <script>
 	$(document).ready(function() {
-		$(".del-btn").on("click", function() {
-			let targetId = $(this).parent().siblings(".bookmark-id").text();
+		$(".del-btn").on("click", function(e) {
+			// let targetId = $(this).parent().siblings(".bookmark-id").text();
+			
+			//---- value
+			// 1)
+			//let id = $(this).val();
+		
+			// 2)
+			//let id = e.target.value;
+			
+			//---- data
+			// data-bookmark-id  => data("bookmark-id") 함수 사용
+			let id = $(this).data("bookmark-id");
+			
 			
 			$.ajax({
-				type:"POST"
-				, url:"/lesson06/quiz02/del-bookmark"
-				, data: {"id":targetId}
+				type:"DELETE"
+				, url:"/lesson06/quiz02/delete-bookmark"
+				, data: {"id":id}
 			
 				, success:function(data) {
 					if (data.result == "success") {
-						location.href="/lesson06/quiz01/bookmark-list-view";
+						location.reload(true); // 새로고침 기본값 true인데 안되면 true 넣어 볼 것
+					} else {
+						alert("다시 시도해주세요");
 					}
 				}
 				

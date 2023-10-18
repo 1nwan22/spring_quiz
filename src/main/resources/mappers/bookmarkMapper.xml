@@ -31,16 +31,20 @@
 			`bookmark`
  	</select>
  	
- 	<select id="existUrlByUrl" parameterType="String" resultType="boolean">
+ 	<select id="selectBookmarkByUrl" parameterType="String" resultType="com.quiz.lesson06.domain.Bookmark">
  		SELECT
- 			COUNT(*)
- 		FROM
- 			`bookmark`
+ 			`id`
+ 			, `name`
+			, `url`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`bookmark`
  		WHERE
  			`url` = #{url}
  	</select>
  	
- 	<delete id="delBookmarkById" parameterType="int">
+ 	<delete id="deleteBookmarkById" parameterType="int">
  		DELETE
  		FROM
  			`bookmark`

@@ -21,11 +21,16 @@ public class BookmarkBO {
 		return bookmarkMapper.selectBookmarkList();
 	}
 	
-	public boolean existUrlByUrl(String url) {
-		return bookmarkMapper.existUrlByUrl(url);
+	// input:url output:Bookmark(단건이거나 null이거나)
+	// Too many result error => 단건으로 리턴하지만 결과는 List로 나왔을 때
+	// 중복은 배제한 코드
+	// 재활용 가능한 코드
+	public Bookmark getBookmarkByUrl(String url) {
+		
+		return bookmarkMapper.selectBookmarkByUrl(url);
 	}
 	
-	public void delBookmarkById(int id) {
-		bookmarkMapper.delBookmarkById(id);
+	public void deleteBookmarkById(int id) {
+		bookmarkMapper.deleteBookmarkById(id);
 	}
 }
