@@ -33,7 +33,7 @@
 	$(document).ready(function() {
 		$("#urlCheckBtn").on("click", function() {
 			$("#urlStatusArea").empty();
-			let name = $("name").val().trim();
+			let name = $("#name").val().trim();
 			let url = $("#url").val().trim();
 			
 			$.ajax({
@@ -43,7 +43,9 @@
 				
 				, success:function(data) {
 					if (data.is_duplication) {
-						
+						$("#urlStatusArea").append('<span class="text-danger">중복된 url입니다</span>');
+					} else {
+						$("#urlStatusArea").append('<span class="text-danger">저장 가능한 url 입니다</span>');
 					}
 					
 				}
@@ -58,7 +60,6 @@
 			})
 			
 			
-			$("#urlStatusArea").append('<span class="text-danger">중복된 url입니다.</span>');
 		});
 		
 		
@@ -90,8 +91,6 @@
 				, success:function(data) { // data: response 응답값(JSON String) => Dictionary Object jquery의 AJAX 함수가 json형태이면 parsing해서 객체로 변환해줌
 					// data는 JSON String => Object 변환된 형태로 사용할 수 있다
 					// jquery의 ajax 함수 기능
-					alert(data.code);
-					alert(data.result);
 					if (data.result == "success") {
 						location.href="/lesson06/quiz01/bookmark-list-view";
 					} 

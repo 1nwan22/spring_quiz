@@ -23,18 +23,44 @@
 					<th>NO.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 			<c:forEach items="${bookmarkList}" var="bookmark">
 				<tr>
-					<td>${bookmark.id}</td>
+					<td class="bookmark-id">${bookmark.id}</td>
 					<td>${bookmark.name}</td>
 					<td><a href="${bookmark.url}" target="_blank">${bookmark.url}</a></td>
+					<td><input type="button" class="del-btn btn btn-danger btn-sm" value="삭제"></td>
 				</tr>
 			</c:forEach>
 			</tbody>
 		</table>
 	</div>
+<script>
+	$(document).ready(function() {
+		$(".del-btn").on("click", function() {
+			let targetId = $(this).parent().siblings(".bookmark-id").text();
+			
+			$.ajax({
+				type:"POST"
+				, url:"/lesson06/quiz02/del-bookmark"
+				, data: {"id":targetId}
+			
+				, success:function(data) {
+					if (data.result == "success") {
+						location.href="/lesson06/quiz01/bookmark-list-view";
+					}
+				}
+				
+				, error:function(request, status, error) {
+					alert("실패");
+				}
+			})
+		});
+		
+	});
+</script>
 </body>
 </html>

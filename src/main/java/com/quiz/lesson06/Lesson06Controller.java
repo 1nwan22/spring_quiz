@@ -58,4 +58,29 @@ public class Lesson06Controller {
 		return "lesson06/bookmarkListView";
 	}
 	
+	@ResponseBody
+	@GetMapping("/quiz02/is-duplication")
+	public Map<String, Object> isDuplication(
+			@RequestParam("url") String url) {
+		boolean isDuplicated = bookmarkBO.existUrlByUrl(url);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 200);
+		result.put("is_duplication", isDuplicated);
+		return result;
+	}
+	
+	@PostMapping("/quiz02/del-bookmark")
+	@ResponseBody
+	public Map<String, Object> delBookmarkById(
+			@RequestParam("id") int id) {
+		bookmarkBO.delBookmarkById(id);
+		
+		Map<String, Object> result = new HashMap();
+		result.put("code", 200);
+		result.put("result", "success");
+		
+		
+		return result;
+	}
 }
