@@ -18,19 +18,19 @@
 <body>
 	<div id="wrap" class="container">
 		<header class="d-flex justify-content-center align-items-center">
-			<h1><a href="#" id="logo">통나무 팬션</a></h1>
+			<h1><a href="/booking/check-view" id="logo">통나무 팬션</a></h1>
 		</header>
 		<nav>
 			<ul class="nav nav-fill w-100">
             	<li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">팬션소개</a></li>
           		<li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">객실보기</a></li>
-                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">예약안내</a></li>
-                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">커뮤니티</a></li>
+                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="/booking/add-view">예약하기</a></li>
+                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="/booking/list-view">예약목록</a></li>
             </ul>
 		</nav>
 		<section class="contents">
-			<div id="bookingList">
-				<h2 class="text-center">예약 목록 보기</h2>
+			<div id="bookingList" class="pt-3">
+				<h2 class="text-center mb-3">예약 목록 보기</h2>
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -92,7 +92,7 @@
 			
 				, success:function(data) {
 					if (data.result == "success") {
-						alert("성공");
+						location.reload();
 					} else {
 						alert("실패");
 					}

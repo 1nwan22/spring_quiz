@@ -23,18 +23,18 @@
 <body>
 	<div id="wrap" class="container">
 		<header class="d-flex justify-content-center align-items-center">
-			<h1><a href="#" id="logo">통나무 팬션</a></h1>
+			<h1><a href="/booking/check-view" id="logo">통나무 팬션</a></h1>
 		</header>
 		<nav>
 			<ul class="nav nav-fill w-100">
             	<li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">팬션소개</a></li>
           		<li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">객실보기</a></li>
-                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">예약안내</a></li>
-                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="#">커뮤니티</a></li>
+                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="/booking/add-view">예약하기</a></li>
+                <li class="nav-item"><a class="nav-link text-white font-weight-bold" href="/booking/list-view">예약목록</a></li>
             </ul>
 		</nav>
 		<section class="contents d-flex justify-content-center">
-			<div id="addBooking" class="w-50">
+			<div id="addBooking" class="w-50 pt-3">
 				<h2 class="font-weight-bold text-center my-3">예약 하기</h2>
 				<div>
 					<div class="font-weight-bold my-2">이름</div>
@@ -100,8 +100,16 @@
 				alert("숙박일수를 입력하세요");
 				return;
 			}
+			if (isNaN(day)) {
+				alert("숫자만 입력하세요");
+				return;
+			}		
 			if(!headcount) {
 				alert("숙박인원을 입력하세요");
+				return;
+			}
+			if (isNaN(headcount)) {
+				alert("숫자만 입력하세요");
 				return;
 			}
 			if(!phoneNumber) {
@@ -121,7 +129,8 @@
 				
 				, success:function(data) {
 					if (data.result == "success") {
-						alert("성공");
+						alert("예약이 되었습니다");
+						location.href="/booking/list-view"
 					} else {
 						alert("실패");
 					}

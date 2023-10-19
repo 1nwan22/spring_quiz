@@ -32,6 +32,24 @@ public class BookingController {
 		return "booking/checkView";
 	}
 	
+	@ResponseBody
+	@PostMapping("/check")
+	public Map<String, Object> bookingCheck(
+			@RequestParam("name") String name,
+			@RequestParam("phoneNumber") String phoneNumber) {
+		Booking booking = bookingBO.getBookingByNamePhoneNumber(name, phoneNumber);
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("code", 200);
+		result.put("result", "success");
+		result.put("booking", booking);
+		
+		return result;
+		
+		
+		
+	}
+	
 	// URL: http://localhost:8080/booking/list-view
 	@GetMapping("/list-view")
 	public String bookingListView(Model model) {

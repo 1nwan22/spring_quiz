@@ -10,6 +10,11 @@ import com.quiz.booking.domain.Booking;
 
 @Repository
 public interface BookingMapper {
+	
+	public Booking selectBookingByNamePhoneNumber(
+			@Param("name") String name, 
+			@Param("phoneNumber") String phoneNumber);
+	
 	public List<Booking> selectBookingList();
 	
 	public void insertBooking(

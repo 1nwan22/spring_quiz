@@ -15,6 +15,10 @@ public class BookingBO {
 	@Autowired
 	private BookingMapper bookingMapper;
 	
+	public Booking getBookingByNamePhoneNumber(String name, String phoneNumber) {
+		return bookingMapper.selectBookingByNamePhoneNumber(name, phoneNumber);
+	}
+	
 	public List<Booking> getBookingList() {
 		return bookingMapper.selectBookingList();
 	}
