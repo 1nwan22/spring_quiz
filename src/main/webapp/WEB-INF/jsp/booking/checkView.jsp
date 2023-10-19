@@ -29,7 +29,43 @@
             </ul>
 		</nav>
 		<section class="contents">
-			
+			<div class="reserve d-flex">
+					<div class="reserve-real-time col-4 d-flex flex-column align-items-center justify-content-center">
+	                    <div>
+	                        <a id="reserveHref" href="https://booking.naver.com/" target="_blank">
+	                            <h1 class="dsiplay-1">실시간</h1>
+	                            <h1 class="dsiplay-1">예약 하기</h1>
+	                        </a>
+	                    </div>
+	                </div>
+	                <div class="reserve-check col-4">
+	                    <div class="w-100 d-flex flex-column">
+	                        <div class="d-flex align-items-center pt-3 pl-3">
+	                            <h4 class="font-weight-bold">예약 확인</h4>
+	                        </div>
+	                        <div class="pb-1">
+	                            <div class="d-flex align-items-center m-2">
+	                                <span class="idPw col-3 p-0 mr-2">이름:</span>
+	                                <input type="text" id="name" class="form-control p-0 col-8">
+	                            </div>
+	                            <div class="d-flex align-items-center m-2">
+	                                <span class="idPw col-3 p-0 mr-2">전화번호:</span>
+	                                <input type="text" id="phoneNumber" class="form-control p-0 col-8">
+	                            </div>
+	                        </div>
+	                        <div class="d-flex justify-content-end align-items-center pr-3">
+	                            <button type="button" id="checkInfo" class="btn btn-success">조회 하기</button>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="reserve-inqury col-4 d-flex flex-column align-items-center justify-content-center">
+	                    <div class="mr-2">
+	                        <h4>예약문의:</h4>
+	                        <h2>010-</h2>
+	                        <h2>000-1111</h2>
+	                    </div>
+	                </div>
+	    	</div>
 		</section>
 		<footer class="d-flex align-items-center">
 			 <div class="ml-3">

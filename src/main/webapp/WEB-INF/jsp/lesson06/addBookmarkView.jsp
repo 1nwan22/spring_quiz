@@ -143,7 +143,7 @@
 					alert(error);
 				}
 			})
-		})
+		});
 		
 	});
 </script>
