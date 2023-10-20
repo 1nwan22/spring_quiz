@@ -15,8 +15,17 @@ public class BookingBO {
 	@Autowired
 	private BookingMapper bookingMapper;
 	
+	// input: name, phoneNumber  output:Booking(null or Booking)
 	public Booking getBookingByNamePhoneNumber(String name, String phoneNumber) {
-		return bookingMapper.selectBookingByNamePhoneNumber(name, phoneNumber);
+		List<Booking> bookingList = bookingMapper.selectBookingByNamePhoneNumber(name, phoneNumber);
+		// 최신: 마지막 인덱스
+		// mybatis 는 리스트가 비어 있으면 null이 아닌 []로 줌
+		if (bookingList.isEmpty()) {
+			return null; // null
+		}
+		
+		// 리스트가 비어 있지 않으면 마지막 객체 리턴
+		return bookingList.get(bookingList.size() - 1); // Booking
 	}
 	
 	public List<Booking> getBookingList() {

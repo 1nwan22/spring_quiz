@@ -97,18 +97,23 @@
 				type:"POST"
 				, url:"/booking/check"
 				, data:{"name":name, "phoneNumber":phoneNumber}
-			
+				
+				// 응답값
+				// {"code":400, "error_message":"데이터가 존재하지 않습니다."}
+				// {"code":200, "result":booking}
 				, success:function(data) {
-					if (data.result == "success") {
-						alert("이름: " + data.booking.name + "\n" 
-								+ "날짜: " + data.booking.date + "\n"
-								+ "일수: " + data.booking.day + "\n"
-								+ "인원: " + data.booking.headcount + "\n"
-								+ "상태: " + data.booking.state + "\n");
+					if (data.code == 200) {
+						alert("이름: " + data.result.name
+								+ "\n날짜: " + data.result.date  // data.result.date.substring(0, 10)
+								+ "\n일수: " + data.result.day
+								+ "\n인원: " + data.result.headcount
+								+ "\n상태: " + data.result.state);
+					} else if (data.code == 400) {
+						alert(data.error_message);
 					}
 				}
 				, error:function(request, status, error) {
-					alert("error");
+					alert("조회 실패");
 				}
 				
 			});

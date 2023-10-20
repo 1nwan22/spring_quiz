@@ -11,7 +11,7 @@ import com.quiz.booking.domain.Booking;
 @Repository
 public interface BookingMapper {
 	
-	public Booking selectBookingByNamePhoneNumber(
+	public List<Booking> selectBookingByNamePhoneNumber( // 같은 사람이 여러번 할 수 있으므로 리스트에 담는다 or xml에서 최신으로 조건을 걸어도 됨
 			@Param("name") String name, 
 			@Param("phoneNumber") String phoneNumber);
 	
