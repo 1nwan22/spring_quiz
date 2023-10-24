@@ -30,8 +30,10 @@ public class CompanyBO {
 	// input: id, scale, headcount  output: 변경된 CompanyEntity
 	public CompanyEntity updateCompanyScaleHeadcountById(int id, String scale, int headcount) {
 		CompanyEntity company = companyRepository.findById(id).orElse(null);
+
 		if (company != null) {
-			return companyRepository.save(company.toBuilder()
+			return companyRepository.save(
+					company.toBuilder()
 					.scale(scale)
 					.headcount(headcount)
 					.build());
