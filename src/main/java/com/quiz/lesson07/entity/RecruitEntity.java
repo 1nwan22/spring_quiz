@@ -1,5 +1,6 @@
 package com.quiz.lesson07.entity;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ import lombok.ToString;
 @Getter
 @Builder(toBuilder = true)
 @Table(name="recruit")
-@Entity(name="recruit")
+@Entity
 public class RecruitEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +45,7 @@ public class RecruitEntity {
 	
 	private int salary;
 	
-	private ZonedDateTime deadline;
+	private LocalDate deadline; // 시분초 없음
 	
 	@UpdateTimestamp
 	@Column(name = "createdAt", updatable = false)
